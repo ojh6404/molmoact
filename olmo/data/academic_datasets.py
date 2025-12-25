@@ -206,8 +206,8 @@ class OkVqa(Dataset):
     @classmethod
     def download(cls, n_procs=1):
         local_name = join(ACADEMIC_DATASETS, "okvqa")
-        datasets.load_dataset_builder(cls.PATH).download_and_prepare()
-        ds = datasets.load_dataset(cls.PATH)
+        datasets.load_dataset_builder(cls.PATH, trust_remote_code=True).download_and_prepare()
+        ds = datasets.load_dataset(cls.PATH, trust_remote_code=True)
         save_local_dataset(ds, local_name, n_procs)
 
     def __init__(self, split: str, multi_question=False, keep_in_memory=False):
@@ -264,11 +264,11 @@ class TextVqa(HfDataset):
 
     @classmethod
     def download(cls, n_procs=1):
-        datasets.load_dataset_builder(cls.PATH).download_and_prepare()
+        datasets.load_dataset_builder(cls.PATH, trust_remote_code=True).download_and_prepare()
 
     def __init__(self, split: str, identifier=None, keep_in_memory=False):
         super().__init__(
-            split=split, keep_in_memory=keep_in_memory)
+            split=split, keep_in_memory=keep_in_memory, trust_remote_code=True)
 
     def get(self, item, rng):
         example = self.dataset[item]

@@ -96,13 +96,18 @@ MolmoAct is a repository for training and using Ai2’s open-sourced **Action Re
 
 We provide the `Dockerfile` to build the docker, where we ran all our training experiments on. We strongly recommand to build the same docker on your own and run training on that.
 
-If you want to install environment on your own, first install python 3.11, then install [PyTorch](https://pytorch.org) according to the instructions specific to your operating system. 
+If you want to install environment on your own, first install python 3.11, then install [PyTorch](https://pytorch.org) according to the instructions specific to your operating system.
 
 Next, in both cases, go to your working molmoact folder, and run:
 
 ```bash
 git clone https://github.com/allenai/molmoact.git
 cd molmoact
+
+# Using uv (recommended for faster installation)
+uv sync --all-extras
+
+# Or using pip
 pip install -e .[all]
 ```
 ---
